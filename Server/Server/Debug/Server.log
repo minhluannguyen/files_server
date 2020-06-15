@@ -1,6 +1,0 @@
-﻿  pch.cpp
-  Server.cpp
-  ServerDlg.cpp
-E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\Server\Server\ServerDlg.cpp(114,9): error C2561: 'CServerDlg::OnInitDialog': function must return a value
-E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\Server\Server\ServerDlg.cpp(80): message : see declaration of 'CServerDlg::OnInitDialog'
-  Generating Code...

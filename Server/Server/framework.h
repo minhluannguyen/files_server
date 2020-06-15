@@ -30,8 +30,6 @@
 
 #include <afxsock.h>
 
-#include<iostream>
-#include <vector>
 
 
 

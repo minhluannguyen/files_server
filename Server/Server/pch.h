@@ -9,5 +9,5 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
-
+char* getIpAddress();
 #endif //PCH_H

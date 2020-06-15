@@ -65,6 +65,9 @@ void CServerDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST_CLIENT, listCtrl_All_Client);
 	DDX_Control(pDX, IDC_LIST_FILES, listCtrl_File_List);
 	DDX_Control(pDX, IDC_EDIT_LOG, edt_log);
+	DDX_Control(pDX, IDC_BUTTON_BROWSE, but_upload);
+	DDX_Control(pDX, IDC_BUTTON_REMOVE, but_remove);
+	DDX_Control(pDX, IDC_BUTTON_DOWN, but_down);
 }
 
 BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
@@ -72,6 +75,8 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_START, &CServerDlg::OnBnClickedButtonStart)
+	ON_BN_CLICKED(IDC_BUTTON_BROWSE, &CServerDlg::OnBnClickedButtonBrowse)
+	ON_BN_CLICKED(IDC_BUTTON_REMOVE, &CServerDlg::OnBnClickedButtonRemove)
 END_MESSAGE_MAP()
 
 
@@ -111,8 +116,23 @@ BOOL CServerDlg::OnInitDialog()
 	if (AfxSocketInit() == FALSE)
 	{
 		MessageBox(_T("Init socket failed!"));
-		return;
+		return FALSE;
 	}
+
+	//GetIPAddress test
+	char* ipAdd = getIpAddress();
+	CString tmp (ipAdd);
+	MessageBox(tmp);
+
+	edt_port.SetWindowText(_T("0"));
+
+	//File list init
+	listCtrl_File_List.SetExtendedStyle(LVS_EX_GRIDLINES | TVS_FULLROWSELECT);
+	listCtrl_File_List.InsertColumn(0, _T("File Name"), LVCFMT_LEFT, 200);
+	listCtrl_File_List.InsertColumn(1, _T("Uploader"), LVCFMT_LEFT, 120);
+
+	listCtrl_All_Client.SetExtendedStyle(LVS_EX_GRIDLINES | TVS_FULLROWSELECT);
+	listCtrl_Onl_Client.SetExtendedStyle(LVS_EX_GRIDLINES | TVS_FULLROWSELECT);
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -167,6 +187,54 @@ HCURSOR CServerDlg::OnQueryDragIcon()
 
 
 
+void CServerDlg::addFileInfo(CString name, CString owner, CString path)
+{
+	fileInfo file;
+	file.name = name;
+	file.owner = owner;
+	file.path = path;
+
+	fileInfoArr.push_back(file);
+}
+
+void CServerDlg::removeFileInfo(int index)
+{
+	vector<fileInfo>::iterator it;
+	it = fileInfoArr.begin();
+	int i = 0;
+	for (it; it != fileInfoArr.end(); ++it)
+	{
+		if (i == index)
+		{
+			fileInfoArr.erase(it);
+			break;
+		}
+		else
+		{
+			i++;
+		}
+	}
+}
+
+void CServerDlg::updateFileList()
+{
+
+	int listCount = listCtrl_File_List.GetItemCount();
+	int arrCount = fileInfoArr.size();
+	//Empty list
+	for (int i = 0; i < listCount; i++)
+	{
+		listCtrl_File_List.DeleteItem(0);
+	}
+
+	for (int i = 0; i < arrCount; i++)
+	{
+		fileInfo tmpFileInfo = fileInfoArr[i];
+		listCtrl_File_List.InsertItem(i, tmpFileInfo.name);
+		listCtrl_File_List.SetItemText(i, 1, tmpFileInfo.owner);
+	}
+}
+
 void CServerDlg::OnBnClickedButtonStart()
 {
 	// TODO: Add your control notification handler code here
@@ -175,11 +243,59 @@ void CServerDlg::OnBnClickedButtonStart()
 	CString str_ip;
 
 	edt_port.GetWindowText(str_port);
-
+	if (str_port.IsEmpty())
+	{
+		MessageBox(_T("Please enter port number!"));
+	}
 	//
 	sockServer.Create(_ttoi(str_port), SOCK_STREAM, _T(IPADDRESS));
 
 	sockServer.Listen(5);
 
-	std::vector<CSocket> clientSocket;
+
+	//Enable all the listCtrl and Button
+	listCtrl_Onl_Client.EnableWindow();
+	listCtrl_All_Client.EnableWindow();
+	listCtrl_File_List.EnableWindow();
+	edt_log.EnableWindow();
+	but_upload.EnableWindow();
+	but_remove.EnableWindow();
+	but_down.EnableWindow();
+
+}
+
+
+void CServerDlg::OnBnClickedButtonBrowse()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+	CString str_fileName, str_fileOwner, str_filePath;
+	CFileDialog t1(true);
+	if (t1.DoModal() == IDOK)
+	{
+		str_fileName = t1.GetFileName();
+		str_filePath = t1.GetPathName();
+		str_fileOwner = _T("Admin");
+		addFileInfo(str_fileName, str_fileOwner, str_filePath);
+		updateFileList();
+		UpdateData(FALSE);
+	}
+}
+
+
+void CServerDlg::OnBnClickedButtonRemove()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+
+	POSITION pos = listCtrl_File_List.GetFirstSelectedItemPosition();
+	if (pos == NULL)
+		MessageBox(_T("No file was selected!!!"), _T("Warning!"), MB_ICONWARNING);
+	else 
+	{
+		int index = listCtrl_File_List.GetNextSelectedItem(pos);
+		removeFileInfo(index);
+		updateFileList();
+		UpdateData(FALSE);
+	}
 }

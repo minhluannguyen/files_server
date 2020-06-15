@@ -3,7 +3,19 @@
 //
 
 #pragma once
+
+#include<iostream>
+#include <vector>
+using namespace std;
+
 #define IPADDRESS "171.0.0.1"
+
+
+struct fileInfo {
+	CString name;
+	CString owner;
+	CString path;
+};
 
 // CServerDlg dialog
 class CServerDlg : public CDialogEx
@@ -41,13 +53,27 @@ protected:
 	CListCtrl listCtrl_All_Client;
 	// File list to download or remove
 	CListCtrl listCtrl_File_List;
+	// Log history
+	CEdit edt_log;
+	// Add file to the server
+	CButton but_upload;
+	// Remove file from list
+	CButton but_remove;
+	// Download button
+	CButton but_down;
 
-	//
+	//Socket stuff
 	CSocket sockServer;
+
+	//Fileinfo
+	vector<fileInfo> fileInfoArr;
+	void addFileInfo(CString, CString, CString);
+	void removeFileInfo(int index);
+	void updateFileList();
 
 public:
 	afx_msg void OnBnClickedButtonStart();
-protected:
-	// Log history
-	CEdit edt_log;
+	afx_msg void OnBnClickedButtonBrowse();	
+
+	afx_msg void OnBnClickedButtonRemove();
 };
