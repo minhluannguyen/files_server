@@ -6,6 +6,7 @@
 #include "framework.h"
 #include "Client.h"
 #include "ClientDlg.h"
+#include "ClientMenuDlg.h"
 #include "afxdialogex.h"
 
 #include "SigninDlg.h"
@@ -72,7 +73,8 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON_START, &CClientDlg::OnBnClickedButtonStart)
-	ON_BN_CLICKED(IDC_BUTTON2, &CClientDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON2, &CClientDlg::OnBnClickedButtonSignIn)
+	ON_BN_CLICKED(IDC_BUTTON1, &CClientDlg::OnBnClickedButtonLogin)
 END_MESSAGE_MAP()
 
 
@@ -177,9 +179,29 @@ void CClientDlg::OnBnClickedButtonStart()
 }
 
 
-void CClientDlg::OnBnClickedButton2()
+void CClientDlg::OnBnClickedButtonSignIn()
 {
 	// TODO: Add your control notification handler code here
 	SigninDlg SignDlg;
 	SignDlg.DoModal();
+}
+
+
+void CClientDlg::OnBnClickedButtonLogin()
+{
+	// TODO: Add your control notification handler code here
+	//Get text from edit box
+	CString str_username, str_password;
+	edt_username.GetWindowText(str_username);
+	edt_pass.GetWindowText(str_password);
+
+	//Check from server
+	//...
+	if (TRUE)
+	{
+		ClientMenuDlg ClientMenu;
+		ClientMenu.getUsername(str_username);
+		CClientDlg::OnCancel();		
+		ClientMenu.DoModal();
+	}
 }

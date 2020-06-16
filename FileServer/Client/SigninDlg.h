@@ -30,4 +30,7 @@ protected:
 	CButton but_accept;
 	// Exit sign in menu
 	CButton but_cancel;
+public:
+	afx_msg void OnBnClickedButtonCancel();
+	afx_msg void OnBnClickedButtonAc();
 };

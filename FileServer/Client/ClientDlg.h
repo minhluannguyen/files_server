@@ -43,5 +43,6 @@ protected:
 	// Sign in button
 	CButton but_sign_in;
 public:
-	afx_msg void OnBnClickedButton2();
+	afx_msg void OnBnClickedButtonSignIn();
+	afx_msg void OnBnClickedButtonLogin();
 };
