@@ -1,0 +1,5 @@
+Chuyen_de_2.pdf:Admin:E:\Chuyen_de_2.pdf
+New Text Document.txt:Admin:E:\New Text Document.txt
+Source.cpp:Admin:E:\Hoc tap\Hackerank\Thien_duong_chu_cai\BT\Source.cpp
+OllyDbg.rar:Admin:C:\Users\DELL\Downloads\OllyDbg.rar
+PEiD.rar:Admin:C:\Users\DELL\Downloads\PEiD.rar
