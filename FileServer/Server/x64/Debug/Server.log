@@ -1,1 +1,20 @@
-﻿
+﻿  Server.cpp
+  ServerDlg.cpp
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(4): warning C4603: '_CRT_SECURE_NO_WARNINGS': macro is not defined or definition is different after precompiled header use
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(4): message : Add macro to precompiled header instead of defining here
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(5): message : use of precompiled header
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(242,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(327,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(359,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(392,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(424,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(429,44): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(463,40): warning C4927: illegal conversion; more than one user-defined conversion has been implicitly applied
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Server\ServerDlg.cpp(463,40): message : while calling the constructor 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string(const _Elem *const )'
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xstring(2334): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string'
+  Generating Code...
+  Server.vcxproj -> E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\x64\Debug\Server.exe

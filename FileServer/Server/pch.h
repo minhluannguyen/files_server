@@ -6,8 +6,13 @@
 
 #ifndef PCH_H
 #define PCH_H
-
-// add headers that you want to pre-compile here
 #include "framework.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+// add headers that you want to pre-compile here
 char* getIpAddress();
+string getFileName(string s);
+string getFilePath(string s);
 #endif //PCH_H

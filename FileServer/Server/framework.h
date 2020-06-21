@@ -28,7 +28,7 @@
 
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
-#include <afxsock.h>
+#include <afxsock.h>	//MFC socket
 
 
 

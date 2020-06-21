@@ -1,1 +1,8 @@
-﻿
+﻿  pch.cpp
+  Client.cpp
+  ClientDlg.cpp
+  ClientMenuDlg.cpp
+E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\Client\ClientMenuDlg.cpp(104,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  SigninDlg.cpp
+  Generating Code...
+  Client.vcxproj -> E:\Hoc tap\Study\Nam hai\HK2\MMT\TH\Doan_Socket\SourceO\files_server\FileServer\x64\Debug\Client.exe

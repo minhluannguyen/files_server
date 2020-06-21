@@ -9,6 +9,8 @@
 #include <errno.h> 
 #include <sys/types.h>
 
+
+
 // Returns hostname for the local computer 
 void checkHostName(int hostname)
 {
